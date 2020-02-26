@@ -2,8 +2,9 @@
 
 ## Abstract
 This document describes the fundamental theory of blockchain security and provides knowledge to answer a few questions such as **What makes a blockchain system secure ?**, **How is the consensus mechanism implemented ?**, **The role of cryptography in blockchain security**. It also tries to help the reader visualize the way that the blockchain-based system makes to get security.
+
 ## Status of this Memo
-This document is missing a detail description of [The most important feature]() in [section 3]().
+Updating
 
 ## Table of Contents
 [1. Introduction](#1-introduction)
@@ -56,9 +57,11 @@ There are usually three types of information is stored in each block:
 Essentially block hash like a block’s fingerprint, it is commonly a unique string of character generated depend on data of transactions, hash of previous block and other factors that are determined by network publishers to fix with their customers and target market.
 
 Take a look at this example, noted that (1) and (2) is the same thing:
-```
-... ---> [Block1: Info1; blk0-hash; hash(1)] ---> [Block2: Info2; blk0-hash(2); hash]---> ...
-```
+
+![Blockchain structure](./img/blockchain/blockchain-des-1.png)
+
+![Blockchain broken](./img/blockchain/blockchain-des-2.png)
+
 We can see above **Block2** contains the hash string of **Block1**, and uses it as a signature to know where is this block located. If **Block1**'s hash is changed, the link will be broken. To make the chain sense again, re-generate hash of Block2 and every block after that is needed. It is usually a hard job.
 
 Depend on the way that blockchain works, there is many features that make blockchain attractive for financial use cases in terms of confidentiality and privacy:
@@ -110,27 +113,36 @@ Before research about the role of cryptography in blockchain security, we need t
 In short, cryptography is the process converting readable info into unintelligible info and vice-versa. Depend on this characteristic, cryptography has many applications such as storing, transmitting data with benefits on protection and authentication.
 
 Modern cryptography has a few properties:
-- Confidentiality
-    > Nobody can understand the content of encrypted information.
-- Integrity
-    > The information that is encrypted, can't be altered by anyone.
-- Non-repudiation
-    > Sender cannot deny their intentions in the transmission of the information at a later stage.
-- Authentication
-    > Can confirm who is in the system.
+**Confidentiality**
+> Nobody can understand the content of encrypted information.
+
+In detail, confidentiality is the protection of information from unauthorized persons. To implement this characteristic, blockchain using encrypt function that converts readable information to an unreadable format called cipher and ability decryption is only provides for the person who got authorization. It also means that if the information is held in confidence, it will be shared only after authorization is provided, and then only with authorized individuals.
+
+**Integrity**
+> The information that is encrypted, can't be altered by anyone.
+
+This is a critical respect to the design, implementation and usage of any system which stores, processes, or retrieves data. Integrity ensures that infomations is accuracy and consistency over its entire life-cycle. Meaning of this concept is very variety depend on the field that applies it. In our context, it is invariability of encripted information.
+
+**Non-repudiation**
+> Sender cannot deny their intentions in the transmission of the information at a later stage.
+
+Non-repudiation is the assurance that nobody can reject the validity of something in system. In other words, non-repudiation makes the system avoids the ability that a message or information is denied its original location as well as authenticity and integrity. It is widely applied in the information security field to get proof of the origin and the integrity of data.
 
 From the above properties, there are three popular types of cryptography:
+
+![Symmetric-key Cryptography](./img/blockchain/cryptography.png)
+
 - Symmetric-key Cryptography
     > Sender and receiver use the same key to encrypt and decrypt infomations.
-    ```
-    (Readable data)  ===key+encoder==> (Cipher) ====key+decoder===> (Original data)
-    ```
+
+    ![Symmetric-key Cryptography](./img/blockchain/symmetric-key.png)
+
+
 
 - Public-Key Cryptography
     > There are two key in this algorithm: public key is freely distributed and use for encrypting infomation, in the other hand, private key is secret and using for decrypting cipher to readable infomation.
-    ```
-    (Readable data) ===public key+encoder==>(Cipher)===private key+decoder===> (Original data)
-    ```
+
+    ![Public-Key Cryptography](./img/blockchain/public-key.png)
 
 - Hash Functions
     > No key is used. Information is transferred through a function that has a few properties such as result is a fixed-length string (hash), the same input makes the same output, different input leads to completely different output and output can not be reversed.
@@ -165,6 +177,9 @@ To understand clearly the above properties of PoW and the way that they interact
 In the Bitcoin, a few transactions occurred on the network is packed in a block. To identify each block, Bitcoin blockchain system uses a hash string that is generated by using a cryptography hash function. This hash is generated depend on block's stored data, previous block's hash and another factor (in this context, this is a random **nonce** number). We can imagine that the three above properties are combined together and transmitted through a hash function to get the identificational hash string.
 
 Specific example with Bitcoin mechanism
+
+![PoW](./img/blockchain/pow.png)
+
 
 Let's assume a rule in a mining round like following: Miner needs finding a random nonce so that combines it with block's data and previous block's hash together and pass through hash function SHA-256, required result is a hash string starting with 4 zeros. E.x: `0000ankhsdqk12KLwkqLKWK...`.
 
