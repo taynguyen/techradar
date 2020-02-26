@@ -1,11 +1,5 @@
-
-Bien Vo
-
-Feb 2020
-
----
 # Blockchain security
----
+
 ## Abstract
 This document describes the fundamental theory of blockchain security and provides knowledge to answer a few questions such as **What makes a blockchain system secure ?**, **How is the consensus mechanism implemented ?**, **The role of cryptography in blockchain security**. It also tries to help the reader visualize the way that the blockchain-based system makes to get security.
 ## Status of this Memo
@@ -67,20 +61,47 @@ Take a look at this example, noted that (1) and (2) is the same thing:
 ```
 We can see above **Block2** contains the hash string of **Block1**, and uses it as a signature to know where is this block located. If **Block1**'s hash is changed, the link will be broken. To make the chain sense again, re-generate hash of Block2 and every block after that is needed. It is usually a hard job.
 
-### 3. What makes a blockchain system secure?
+Depend on the way that blockchain works, there is many features that make blockchain attractive for financial use cases in terms of confidentiality and privacy:
+- Avoids the need of midle-man which can reduce transfer cost.
+- Supports for digital transactions.
+- Easy to share information in the network.
+
+### 3. What makes a blockchain system secure
 Description in [section 2](#2-how-does-blockchain-works) is a very simple view about blockchain to help everybody without technical knowledge to get an overview of the blockchain system. In the real-life, blockchain is a complex platform with a variety of properties, theories, algorithms, and mechanisms. A lot of things contribute to building blockchain security that includes advanced cryptographic techniques and mathematical models of behavior and decision-making and this is far from a simple subject. Therefore, this is very important to understand a few basic concepts and mechanisms that make blockchain have robust protection.
 
 #### 3a. The most important features
-Decentralization
+**Decentralization**
+
 > Copies of the blockchain ledger are stored and updated on each node-computer in the network, meaning that there is no central authority to make decisions.
 
-Immutability
-> Ability of blockchain to prevent alteration of confirmed transactions. So that priority guarantees the integrity of data. It also means that transaction records after each newly confirmed block of data to be valid.
+Almost all systems today are operating into centralization, meaning authorities will be held by a single highest authority in charge of managing systems, such as a central bank, state apparatus, company or event a class. This method helps someone get mastership and ensure the process is methodical from top-down. But this exists several crucial disadvantages such as any malfunction at the top operation has negatives effect on the entire system, stemming from the fact that any central authority also plays the role of a single point of failure in the system. To resolve centralization's disadvantages, a contrast feature is created, called **Decentralization**. This is a process of distributing and dispersing power away from a central authority.
 
-Consensus
+A few advantages of decentralization
+- Reduces the burden on top executives
+- Facilitates diversification
+- Better control and supervision
+- Quick Decision-Making
+
+**Consensus**
 > Ability of nodes agrees on the true state of the network to ensure that the rules of the system are being followed and all parties involved agree on the current network's state.
 
-Combined, decentralization, consensus, and immutability provide the framework for data security in Blockchain networks.
+In any centralized system, like company employee management system, a central adminstrator hash the authority to maintain and update the database. In other side, blockchain is a distributed decentralized. There is no single central authority to make decision about validity of each transaction. But transactions of  blockchain system is always secured and verified because of consensus machanisms.
+
+A consensus algorithm is a procedure through which all the peers of the blockchain network reach a common agreement about the present state of distributed ledger. It establish trust between unknown peers in network and ensure that the one and only one truth that is agreed by all the nodes in the blockchain system, is added into ledger.
+
+There is many consensus protocols in blockchain:
+- Proof of Work (PoW)
+- Proof of Stake (PoS)
+- Delegated Proof of Stake (DPoS)
+- Proof of Important (PoI)
+- Proof of Elapsed Time (PoET)
+
+**Immutability**
+> Immutable means that something is unchanging over time or unable to be changed.
+
+For example, when I send a message into a group chat on Facebook, it has done. I can't delete or edit it. If I want to delete it, I have to persuade my every friend in this group to delete the message. So i say that it got immutability in my from my perspective.
+
+In blockchain, it is ability to prevent alteration of confirmed transactions. So that priority guarantees the integrity of data. It also means that transaction records after each newly confirmed block of data to be valid.
 
 #### 3b. Cryptography in blockchain security
 ##### 3b.1 Cryptography techniques
@@ -200,7 +221,6 @@ Assuming that we have a PoS Blockchain Network. In this network, if you want to 
 - Proof of Word Blockchain gets security by using computational power (Work).
 - Proof of Stake Blockchain is secure because of the constraint of locked coins ( known as security deposits - Stake).
 
----
 ## Reference
 
 <a name="ref1">[1]</a>  "What is Cryptography? | Cryptographic Algorithms | Types of ...." 20 Dec. 2019, https://www.edureka.co/blog/what-is-cryptography/.
